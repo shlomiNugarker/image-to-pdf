@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'title',
-  description: 'description',
+  title: 'Upload Image to Convert to PDF',
+  description: 'Upload Image Document to Convert to PDF For Free !',
 }
 
 export default function RootLayout({

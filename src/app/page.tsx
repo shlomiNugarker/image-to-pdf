@@ -4,7 +4,9 @@ import React, { ChangeEvent, FormEvent, useState } from 'react'
 import axios from 'axios'
 
 const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3030'
+  process.env.NODE_ENV === 'production'
+    ? 'png-to-pdf-production.up.railway.app'
+    : 'http://localhost:3030'
 
 export default function Home() {
   const [file, setFile] = useState<File | null>(null)
@@ -53,19 +55,39 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1>Upload Image to Convert to PDF</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit" disabled={loading}>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
+      <h1 className="text-3xl font-bold mb-4">
+        Upload Image to Convert to PDF
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md"
+      >
+        <input
+          type="file"
+          onChange={handleFileChange}
+          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className={`w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ${
+            loading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+        >
           {loading ? 'Uploading...' : 'Upload and Convert'}
         </button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p className="mt-4 text-red-500">{error}</p>}
       {downloadUrl && (
-        <div>
-          <h2>Converted PDF:</h2>
-          <a href={downloadUrl} download="converted.pdf">
+        <div className="mt-4">
+          <h2 className="text-xl font-semibold">Converted PDF:</h2>
+          <br />
+          <a
+            href={downloadUrl}
+            download="converted.pdf"
+            className=" hover:underline m-t-3 `w-full py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+          >
             Download PDF
           </a>
         </div>
