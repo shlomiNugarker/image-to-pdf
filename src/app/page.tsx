@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'png-to-pdf-production.up.railway.app'
+    ? 'https://png-to-pdf-production.up.railway.app/'
     : 'http://localhost:3030'
 
 export default function Home() {
