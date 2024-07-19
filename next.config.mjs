@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://png-to-pdf-production.up.railway.app/:path*', // Replace with your API server URL
+        destination: 'https://png-to-pdf-production.up.railway.app', // Replace with your API server URL
       },
     ]
   },
