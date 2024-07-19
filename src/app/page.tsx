@@ -55,43 +55,71 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold mb-4">
-        Upload Image to Convert to PDF
-      </h1>
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-md bg-white p-6 rounded-lg shadow-md"
+    <>
+      <div
+        style={{ minHeight: ' calc(100vh - 120px)' }}
+        className=" flex flex-col items-center justify-center bg-gray-100 p-4"
       >
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="w-full p-2 mb-4 border border-gray-300 rounded-md"
-        />
-        <button
-          type="submit"
-          disabled={loading}
-          className={`w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ${
-            loading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+        <h1 className="text-3xl font-bold mb-4">
+          Upload Image Doc to Convert to PDF
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md bg-white p-6 rounded-lg shadow-md"
         >
-          {loading ? 'Uploading...' : 'Upload and Convert'}
-        </button>
-      </form>
-      {error && <p className="mt-4 text-red-500">{error}</p>}
-      {downloadUrl && (
-        <div className="mt-4">
-          <h2 className="text-xl font-semibold">Converted PDF:</h2>
-          <br />
-          <a
-            href={downloadUrl}
-            download="converted.pdf"
-            className=" hover:underline m-t-3 `w-full py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+          <input
+            type="file"
+            onChange={handleFileChange}
+            className="w-full p-2 mb-4 border border-gray-300 rounded-md"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
-            Download PDF
+            {loading ? 'Uploading...' : 'Upload and Convert'}
+          </button>
+        </form>
+        {error && <p className="mt-4 text-red-500">{error}</p>}
+        {downloadUrl && (
+          <div className="mt-4">
+            <h2 className="text-xl font-semibold">Converted PDF:</h2>
+            <br />
+            <a
+              href={downloadUrl}
+              download="converted.pdf"
+              className=" hover:underline m-t-3 `w-full py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            >
+              Download PDF
+            </a>
+          </div>
+        )}
+      </div>
+
+      <footer className="w-full bg-gray-800 text-white py-4 text-center">
+        <p className="m-1">
+          Developed by{' '}
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/shlomi-nugarker-b89777155/"
+          >
+            Shlomi Nugarker
           </a>
-        </div>
-      )}
-    </div>
+        </p>
+        <p className="m-1">
+          <a href="mailto:shlomin1231@gmail.com">shlomin1231@gmail.com</a>
+        </p>
+        <p className="m-1">
+          <a
+            target="_blank"
+            href="https://shlomi-nugarker-portfolio.vercel.app/"
+          >
+            shlomi-nugarker-portfolio.vercel.app/
+          </a>
+        </p>
+      </footer>
+    </>
   )
 }
