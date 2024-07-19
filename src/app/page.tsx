@@ -9,6 +9,8 @@ const BASE_URL =
 export default function Home() {
   const [file, setFile] = useState<File | null>(null)
   const [downloadUrl, setDownloadUrl] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleFileChange = (ev: ChangeEvent<HTMLInputElement>) => {
     if (ev.target.files && ev.target.files.length > 0) {
@@ -22,6 +24,10 @@ export default function Home() {
 
     const formData = new FormData()
     formData.append('image', file)
+
+    setLoading(true)
+    setError('')
+    setDownloadUrl('')
 
     try {
       const response = await axios.post(
@@ -40,6 +46,9 @@ export default function Home() {
       setDownloadUrl(url)
     } catch (error) {
       console.error('Error uploading file:', error)
+      setError('Failed to upload and convert the file. Please try again.')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -48,8 +57,11 @@ export default function Home() {
       <h1>Upload Image to Convert to PDF</h1>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload and Convert</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Uploading...' : 'Upload and Convert'}
+        </button>
       </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {downloadUrl && (
         <div>
           <h2>Converted PDF:</h2>
