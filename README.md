@@ -2,6 +2,8 @@
 
 This project is a web application that allows users to upload an image and convert it to a PDF document.
 
+the backend of this project is here: https://github.com/shlomiNugarker/jpeg-to-pdf-nodejs
+
 ## Features
 
 - Upload an image file
@@ -23,20 +25,13 @@ This project is a web application that allows users to upload an image and conve
    git clone  https://github.com/shlomiNugarker/jpeg-to-pdf-nextjs.git
    ```
 
-2. Clone the repository:
-
-   ```bash
-   git clone https://github.com/shlomiNugarker/jpeg-to-pdf-nextjs.git
-
-   ```
-
-3. Install the dependencies:
+2. Install the dependencies:
 
    ```bash
    npm install
    ```
 
-4. Run the development server:
+3. Run the development server:
 
    ```bash
    npm run dev
